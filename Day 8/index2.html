@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Fruits object</h1>
+
+    <script>
+      // ask user how many fruits they want to enter,  for each fruit ask for name and quantity
+
+      // create and object fruits with each fruitname and property and quantity as value
+
+      let numberOfFruits = prompt("How many fruits do you want to enter?");
+      let fruits = {};
+
+      for (let i = 0; i < numberOfFruits; i++) {
+        let fruitName = prompt("Enter the name of fruit " + (i + 1));
+        let quantity = prompt("Enter the quantity for " + fruitName);
+        fruits[fruitName] = quantity;
+      }
+
+      console.log(fruits);
+    </script>
+  </body>
+</html>
