@@ -1,0 +1,10 @@
+body{
+    font-family: verdana;
+    font-size: 2em;
+}
+
+#mySubmit{
+    font-size: 1em;
+    color: white;
+    background-color: rgb(103, 103, 251);
+}

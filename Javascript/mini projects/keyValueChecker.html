@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key value checker</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        } 
+
+        .project{
+            padding-top: 30%;
+        }
+
+        #insert{
+            padding: 50px 50px;
+            border: 1px solid white;
+        }
+
+        h3{
+            color: whitesmoke;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Key Value Checker Project</h1>
+
+    <div class="project">
+        <div id="insert">
+            <div class="key">
+                Press the key and watch magic
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+     const insert = document.getElementById('insert')
+
+     window.addEventListener('keydown', (e)=>{
+        insert.innerHTML = `
+            <h3>Key: ${e.key === ' ' ? 'space' : e.key}</h3>
+            <h3>Key Code: ${e.keyCode}</h3>
+            <h3>Code: ${e.code}</h3>
+        `;
+     })
+</script>
+</html>
