@@ -1,0 +1,85 @@
+<!-- // Registration form funn name -- only letter nd sapces are allowed min length
+
+// age - numbers 18-60
+// email - valid email format
+// phone number - 10 digits only
+// password - min 6 char, 1 uppercase, 1 lowercase, 1 digit, 1 special char -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Registration Form</h1>
+
+    <form id="regForm">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" required /><br /><br />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" required /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required /><br /><br />
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" required /><br /><br />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required /><br /><br />
+
+      <button type="submit">Register</button>
+    </form>
+
+    <script>
+      const form = document.getElementById("regForm");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const fullName = document.getElementById("fullName").value;
+        const age = parseInt(document.getElementById("age").value);
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const password = document.getElementById("password").value;
+
+        const nameRegex = /^[A-Za-z\s]+$/;
+        if (!nameRegex.test(fullName) || fullName.length < 3) {
+          alert("Invalid Full Name... (Minimum length is 3)");
+          return;
+        }
+
+        if (isNaN(age) || age < 18 || age > 60) {
+          alert("Invalid Age... Age must be a number between 18 and 60");
+          return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert("Invalid Email...");
+          return;
+        }
+
+        const phoneRegex = /^\d{10}$/;
+        if (!phoneRegex.test(phone)) {
+          alert("Invalid Phone Number... (10 digits required)");
+          return;
+        }
+
+        const passwordRegex =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+        if (!passwordRegex.test(password)) {
+          alert(
+            "Invalid Password... (min 6 char, 1 uppercase, 1 lowercase, 1 digit, 1 special char)"
+          );
+          return;
+        }
+
+        alert("Registration Successful!!!");
+      });
+    </script>
+  </body>
+</html>

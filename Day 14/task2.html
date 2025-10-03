@@ -1,0 +1,63 @@
+<!-- // To Do App with Local Storage and Session Storage -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do App</title>
+</head>
+<body>
+    <h1>To do App</h1>
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button id="addTaskBtn">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskInput = document.getElementById('taskInput');
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const taskList = document.getElementById('taskList');
+
+        // Load tasks from local storage on page load
+        window.onload = function() {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.forEach(task => addTaskToDOM(task));
+        };
+
+        // Add task to DOM and local storage
+        addTaskBtn.onclick = function() {
+            const task = taskInput.value.trim();
+            if (task) {
+                addTaskToDOM(task);
+                saveTaskToLocalStorage(task);
+                taskInput.value = '';
+            }
+        };
+
+        function addTaskToDOM(task) {
+            const li = document.createElement('li');
+            li.textContent = task;
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.onclick = function() {
+                taskList.removeChild(li);
+                removeTaskFromLocalStorage(task);
+            };
+            li.appendChild(deleteBtn);
+            taskList.appendChild(li);
+        }
+
+        function saveTaskToLocalStorage(task) {
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.push(task);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+
+        function removeTaskFromLocalStorage(task) {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks = tasks.filter(t => t !== task);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+        }
+    </script>
+</body>
+</html>
