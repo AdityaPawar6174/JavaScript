@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage API</title>
+</head>
+<body>
+    <h1>Local Storage API</h1>
+    
+    <input type="text" id="username" placeholder="Enter Username">
+    <button onclick="saveData()">Save</button>
+    <button onclick="loadData()">Load</button>
+    <button onclick="removeData()">Remove</button>
+    <button onclick="clearAll()">Clear All</button>
+    <button onclick="showKeys()">Show Keys</button>
+    <p id="result"></p>
+    <p id="keys"></p>
+
+
+    <script>
+        function saveData(){
+            let username = document.getElementById("username").value;
+            localStorage.setItem("usename", username);
+            alert("Data Saved to localStorage");
+        }
+
+        function loadData(){
+            let usename = localStorage.getItem("usename");
+            document.getElementById("result").innerHTML = usename ? "Hello, " + usename : "No data found";
+        }
+
+        function removeData(){
+            localStorage.removeItem("usename");
+            document.getElementById("result").innerHTML = "Data Removed";
+            alert("Data Removed from localStorage");
+        }
+
+        function clearAll(){
+            localStorage.clear();
+            document.getElementById("result").innerHTML = "All Data Cleared";
+            alert("All Data Cleared from localStorage");
+        }
+
+        // Display all keys and their values -- update the result and count of items
+        function showKeys(){
+            let result = "";
+            for(let i=0; i<localStorage.length; i++){
+                let key = localStorage.key(i);
+                let value = localStorage.getItem(key);
+                result += key + ": " + value + "<br>";
+            }
+            result += "<br>Total Items: " + localStorage.length;
+            document.getElementById("keys").innerHTML = result ? result : "No data found";
+        }
+
+    </script>
+</body>
+</html>

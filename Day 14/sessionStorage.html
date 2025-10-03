@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage API</title>
+</head>
+<body>
+    <h1>Session Storage API</h1>
+    
+    <input type="text" id="username" placeholder="Enter Username">
+    <button onclick="saveData()">Save</button>
+    <button onclick="loadData()">Load</button>
+    <button onclick="removeData()">Remove</button>
+    <button onclick="clearAll()">Clear All</button>
+    <button onclick="showKeys()">Show Keys</button>
+    <p id="result"></p>
+    <p id="keys"></p>
+
+
+    <script>
+        function saveData(){
+            let username = document.getElementById("username").value;
+            sessionStorage.setItem("usename", username);
+            alert("Data Saved to sessionStorage");
+        }
+
+        function loadData(){
+            let usename = sessionStorage.getItem("usename");
+            document.getElementById("result").innerHTML = usename ? "Hello, " + usename : "No data found";
+        }
+
+        function removeData(){
+            sessionStorage.removeItem("usename");
+            document.getElementById("result").innerHTML = "Data Removed";
+            alert("Data Removed from sessionStorage");
+        }
+
+        function clearAll(){
+            sessionStorage.clear();
+            document.getElementById("result").innerHTML = "All Data Cleared";
+            alert("All Data Cleared from sessionStorage");
+        }
+
+        // Display all keys and their values -- update the result and count of items
+        function showKeys(){
+            let result = "";
+            for(let i=0; i<sessionStorage.length; i++){
+                let key = sessionStorage.key(i);
+                let value = sessionStorage.getItem(key);
+                result += key + ": " + value + "<br>";
+            }
+            result += "<br>Total Items: " + sessionStorage.length;
+            document.getElementById("keys").innerHTML = result ? result : "No data found";
+        }
+
+    </script>
+</body>
+</html>
