@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification API</title>
+</head>
+<body>
+
+    <button onclick="askPermission()" style="cursor: pointer;">Ask Permission</button>
+
+    <button onclick="showNotification()">Show Notification</button>
+
+    <script>
+
+        // if("Notification" in window){ // window --> browser window object
+        //     document.write("Supports Notification")
+        // } else {
+        //     console.log("Does not support Notification");
+            
+        // }
+
+        function askPermission(){
+            Notification.requestPermission().then( permission => {
+                alert(`Permission is ${permission}`);
+            })
+        }
+
+        function showNotification() {
+            if(Notification.permission === "granted"){
+                new Notification("Hello! there", {
+                    body: "This is a notification demo"
+                });
+            } else {
+                alert("Please allow notification permission");
+            }
+        }
+    </script>
+</body>
+</html>
