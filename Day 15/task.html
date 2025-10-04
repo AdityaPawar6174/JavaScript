@@ -1,0 +1,39 @@
+<!-- // Remainder app 
+// fist time ask for permission
+// later every 10 sec show notification -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remainder App</title>
+</head>
+<body>
+
+    <button onclick="askPermission()" style="cursor: pointer;">Ask Permission</button>
+    <button onclick="startReminder()" style="cursor: pointer;">Start Reminder</button>
+
+    <script>
+        let reminderInterval;
+
+        function askPermission() {
+            Notification.requestPermission().then(permission => {
+                alert(`Permission is ${permission}`);
+            });
+        }
+
+        function startReminder() {
+            if (Notification.permission === "granted") {
+                reminderInterval = setInterval(() => {
+                    new Notification("Reminder", {
+                        body: "This is your reminder notification"
+                    });
+                }, 3000);
+            } else {
+                alert("Please allow notification permission");
+            }
+        }
+    </script>
+</body>
+</html>
