@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+
+    // const student = {
+    //     name: name,
+    //     [key]: value,
+    // };
+
+    //   let n = 2;
+    //   for (let i = 1; i <= n; i++) {
+    //     let name = prompt("Enter the name: ");
+    //     let key = prompt("Enter the key: ");
+    //     let value = prompt(`Enter the ${key} --> value: `);
+    //   }
+
+        // -----------------------------------------------------------
+        
+    let n = prompt("Enter the number of students you want to create: ");
+
+    let students = [];
+
+    for(let i=1; i<=n; i++){
+        let name = prompt("Enter the name: ");
+        let key = prompt("Enter the key: ");
+        let value = prompt(`Enter the ${key} --> value: `);
+
+
+        const student = {
+            name: name,
+            [key] : value
+        }
+
+        students.push(student);
+    }
+
+      console.log(students);
+    </script>
+  </body>
+</html>

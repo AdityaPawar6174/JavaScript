@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+  // Create a main student object
+  let student = {};
+
+  // Take basic info using prompt()
+  student.name = prompt("Enter student's name:");
+  student.age = Number(prompt("Enter student's age:"));
+  student.course = prompt("Enter course name:");
+
+  // Dynamic key for nested marks object
+  student.marks = {}; // nested object
+
+  let numSubjects = Number(prompt("How many subjects?"));
+
+  // Collect subject names and marks dynamically
+  for (let i = 0; i < numSubjects; i++) {
+    let subject = prompt(`Enter subject ${i + 1} name:`);
+    let mark = Number(prompt(`Enter marks for ${subject}:`));
+
+    // Dynamic key assignment
+    student.marks[subject] = mark;
+  }
+
+  // Display the final object
+  console.log("Student Information:");
+  console.log(student);
+
+  // Accessing nested dynamic properties
+//   let checkSubject = prompt("Enter a subject name to check marks:");
+//   if (student.marks[checkSubject] !== undefined) {
+//     alert(`${student.name}'s marks in ${checkSubject}: ${student.marks[checkSubject]}`);
+//   } else {
+//     alert(`No record found for subject ${checkSubject}`);
+//   }
+</script>
+</body>
+</html>
+
